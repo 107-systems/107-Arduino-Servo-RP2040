@@ -40,9 +40,9 @@ void Servo::attach(pin_size_t const pin)
   /* Set system clock to 1 MHz. This is a time increment of 1 us. */
   pwm_set_clkdiv(_slice_num, clk_divider);
   /* Set system period to 20 ms. */
-  pwm_set_wrap(_slice_num, 20*1000UL);
+  pwm_set_wrap(_slice_num, PWM_PERIOD_us);
   /* Set initial output value to 1.5 ms. */
-  pwm_set_chan_level(_slice_num, _channel, 1500);
+  pwm_set_chan_level(_slice_num, _channel, _neutral_pulse_width_us);
   /* Enable PWM. */
   pwm_set_enabled(_slice_num, true);
 
