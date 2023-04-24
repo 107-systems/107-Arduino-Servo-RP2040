@@ -9,7 +9,7 @@
 [![General Formatting Checks](https://github.com/107-systems/107-Arduino-Servo-RP2040/workflows/General%20Formatting%20Checks/badge.svg)](https://github.com/107-systems/107-Arduino-Servo-RP2040/actions?workflow=General+Formatting+Checks)
 [![Spell Check](https://github.com/107-systems/107-Arduino-Servo-RP2040/workflows/Spell%20Check/badge.svg)](https://github.com/107-systems/107-Arduino-Servo-RP2040/actions?workflow=Spell+Check)
 
-This Arduino library provides Hardware-PWM based servo signal generation for the RP2040 if more than 8 servo channels are needed. Otherwise, the servo library shipped with [arduino-pico](https://github.com/earlephilhower/arduino-pico) is the better choice, as it uses [PIO](https://en.wikipedia.org/wiki/Programmed_input%E2%80%93output) and therefore does not consume CPU resources. 
+This Arduino library provides Hardware-PWM based servo signal generation for the RP2040 if more than 8 servo channels are needed. Otherwise, the servo library shipped with [arduino-pico](https://github.com/earlephilhower/arduino-pico) is the better choice, as it uses [PIO](https://en.wikipedia.org/wiki/Programmed_input%E2%80%93output) and therefore does not consume CPU resources.
 
 <p align="center">
   <a href="https://github.com/107-systems/l3xz"><img src="https://raw.githubusercontent.com/107-systems/.github/main/logo/l3xz-logo-memento-mori-github.png" width="30%"></a>
