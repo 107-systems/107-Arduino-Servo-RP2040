@@ -1,0 +1,62 @@
+name: Compile Examples
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/compile-examples.yml"
+      - "examples/**"
+      - "src/**"
+  push:
+    paths:
+      - ".github/workflows/compile-examples.yml"
+      - "examples/**"
+      - "src/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      SKETCHES_REPORTS_PATH: sketches-reports
+      LIBRARIES: |
+        # Install the library from the local path.
+        - source-path: ./
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        board:
+          - fqbn: rp2040:rp2040:arduino_nano_connect
+            platforms: |
+              - name: rp2040:rp2040
+                source-url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+          - fqbn: rp2040:rp2040:rpipico
+            platforms: |
+              - name: rp2040:rp2040
+                source-url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install ESP32 platform dependencies
+        if: startsWith(matrix.board.fqbn, 'esp32:esp32')
+        run: pip3 install pyserial
+
+      - name: Compile examples
+        uses: arduino/compile-sketches@main
+        with:
+          fqbn: ${{ matrix.board.fqbn }}
+          platforms: ${{ matrix.board.platforms }}
+          libraries: ${{ env.LIBRARIES }}
+          enable-deltas-report: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          sketches-report-path: ${{ env.SKETCHES_REPORTS_PATH }}
+
+      - name: Save memory usage change report as artifact
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.SKETCHES_REPORTS_PATH }}
+          path: ${{ env.SKETCHES_REPORTS_PATH }}

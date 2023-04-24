@@ -1,0 +1,25 @@
+#######################################
+# Syntax Coloring Map for 107-Arduino-Servo-RP2040
+#######################################
+
+#######################################
+# Class (KEYWORD1)
+#######################################
+
+rp2040	KEYWORD1
+support	KEYWORD1
+Servo	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+attach	KEYWORD2
+writeMicroseconds	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+DEFAULT_MIN_PULSE_WIDTH	LITERAL1
+DEFAULT_MAX_PULSE_WIDTH	LITERAL1
