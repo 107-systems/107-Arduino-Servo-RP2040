@@ -2,12 +2,12 @@
 :floppy_disk: `107-Arduino-Servo-RP2040`
 ========================================
 <a href="https://opencyphal.org/"><img align="right" src="https://raw.githubusercontent.com/107-systems/.github/main/logo/opencyphal.svg" width="25%"></a>
-[![Arduino Library Badge](https://www.ardu-badge.com/badge/107-Arduino-Cyphal-Support.svg?)](https://www.ardu-badge.com/107-Arduino-Cyphal-Support)
-[![Compile Examples](https://github.com/107-systems/107-Arduino-Cyphal-Support/workflows/Compile%20Examples/badge.svg)](https://github.com/107-systems/107-Arduino-Cyphal-Support/actions?workflow=Compile+Examples)
-[![Arduino Lint](https://github.com/107-systems/107-Arduino-Cyphal-Support/workflows/Arduino%20Lint/badge.svg)](https://github.com/107-systems/107-Arduino-Cyphal-Support/actions?workflow=Arduino+Lint)
-[![keywords.txt Checks](https://github.com/107-systems/107-Arduino-Cyphal-Support/workflows/Extra%20Library%20Checks/badge.svg)](https://github.com/107-systems/107-Arduino-Cyphal-Support/actions?workflow=Extra+Library+Checks)
-[![General Formatting Checks](https://github.com/107-systems/107-Arduino-Cyphal-Support/workflows/General%20Formatting%20Checks/badge.svg)](https://github.com/107-systems/107-Arduino-Cyphal-Support/actions?workflow=General+Formatting+Checks)
-[![Spell Check](https://github.com/107-systems/107-Arduino-Cyphal-Support/workflows/Spell%20Check/badge.svg)](https://github.com/107-systems/107-Arduino-Cyphal-Support/actions?workflow=Spell+Check)
+[![Arduino Library Badge](https://www.ardu-badge.com/badge/107-Arduino-Servo-RP2040.svg?)](https://www.ardu-badge.com/107-Arduino-Servo-RP2040)
+[![Compile Examples](https://github.com/107-systems/107-Arduino-Servo-RP2040/workflows/Compile%20Examples/badge.svg)](https://github.com/107-systems/107-Arduino-Servo-RP2040/actions?workflow=Compile+Examples)
+[![Arduino Lint](https://github.com/107-systems/107-Arduino-Servo-RP2040/workflows/Arduino%20Lint/badge.svg)](https://github.com/107-systems/107-Arduino-Servo-RP2040/actions?workflow=Arduino+Lint)
+[![keywords.txt Checks](https://github.com/107-systems/107-Arduino-Servo-RP2040/workflows/Extra%20Library%20Checks/badge.svg)](https://github.com/107-systems/107-Arduino-Servo-RP2040/actions?workflow=Extra+Library+Checks)
+[![General Formatting Checks](https://github.com/107-systems/107-Arduino-Servo-RP2040/workflows/General%20Formatting%20Checks/badge.svg)](https://github.com/107-systems/107-Arduino-Servo-RP2040/actions?workflow=General+Formatting+Checks)
+[![Spell Check](https://github.com/107-systems/107-Arduino-Servo-RP2040/workflows/Spell%20Check/badge.svg)](https://github.com/107-systems/107-Arduino-Servo-RP2040/actions?workflow=Spell+Check)
 
 This Arduino library provides Hardware-PWM based servo signal generation for the RP2040 if more than 8 servo channels are needed. Otherwise, the servo library shipped with [arduino-pico](https://github.com/earlephilhower/arduino-pico) is the better choice, as it uses [PIO](https://en.wikipedia.org/wiki/Programmed_input%E2%80%93output) and therefore does not consume CPU resources. 
 
