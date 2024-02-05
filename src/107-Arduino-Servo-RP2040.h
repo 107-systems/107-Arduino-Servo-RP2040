@@ -32,7 +32,7 @@ public:
   static uint16_t constexpr DEFAULT_MIN_PULSE_WIDTH_us     = 1000;
   static uint16_t constexpr DEFAULT_MAX_PULSE_WIDTH_us     = 2000;
   static uint16_t constexpr DEFAULT_NEUTRAL_PULSE_WIDTH_us = 1500;
-  static uint16_t constexpr DEFAULT_MAX_ANGLE              = 180;
+  static int constexpr DEFAULT_MAX_ANGLE                   = 180;
 
   static uint16_t constexpr PWM_PERIOD_us = 20*1000UL;
 
@@ -48,13 +48,14 @@ public:
 
   void attach(pin_size_t const pin);
   void attach(pin_size_t const pin, uint16_t min_pulse_width_us, uint16_t max_pulse_width_us);
-  void setMaxAngle(uint16_t const max_angle);
+  void setMaxAngle(int const max_angle);
   void writeMicroseconds(uint16_t const pulse_width_us);
   void write(int value);
   void writeAngle(int angle);
 
 private:
-  uint16_t _min_pulse_width_us, _max_pulse_width_us, _neutral_pulse_width_us, _max_angle;
+  uint16_t _min_pulse_width_us, _max_pulse_width_us, _neutral_pulse_width_us;
+  int _max_angle;
   bool _is_attached;
   uint8_t _slice_num, _channel;
 };

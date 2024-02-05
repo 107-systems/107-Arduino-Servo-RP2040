@@ -60,7 +60,7 @@ void Servo::attach(pin_size_t const pin, uint16_t const min_pulse_width_us, uint
   _is_attached = true;
 }
 
-void Servo::setMaxAngle(uint16_t const max_angle)
+void Servo::setMaxAngle(int const max_angle)
 {
   _max_angle = max_angle;
 }
