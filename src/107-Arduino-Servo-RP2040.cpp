@@ -81,25 +81,21 @@ void Servo::writeMicroseconds(uint16_t const pulse_width_us)
 
 void Servo::write(int const value)
 {
-  if (value < 0)
-    value = 0;
+  int clamped = value;
+  clamped = max(0, clamped);
+  clamped = min(180, clamped);
 
-  if (value > 180)
-    value = 180;
-
-  uint16_t const pulse_width_us = map(value, 0, 180, _min_pulse_width_us, _max_pulse_width_us);
+  uint16_t const pulse_width_us = map(clamped, 0, 180, _min_pulse_width_us, _max_pulse_width_us);
   writeMicroseconds(pulse_width_us);
 }
 
 void Servo::writeAngle(int const angle)
 {
-  if (angle < 0)
-    angle = 0;
+  int clamped = angle;
+  clamped = max(0, clamped);
+  clamped = min(_max_angle, clamped);
 
-  else if (angle > _max_angle)
-    angle = _max_angle;
-
-  uint16_t const pulse_width_us = map(angle, 0, _max_angle, _min_pulse_width_us, _max_pulse_width_us);
+  uint16_t const pulse_width_us = map(clamped, 0, _max_angle, _min_pulse_width_us, _max_pulse_width_us);
   writeMicroseconds(pulse_width_us);
 }
 
