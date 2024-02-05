@@ -74,6 +74,18 @@ void Servo::writeMicroseconds(uint16_t const pulse_width_us)
   pwm_set_chan_level(_slice_num, _channel, pulse_width_us);
 }
 
+void Servo::write(int angle)
+{
+  if (angle < 0)
+    angle = 0;
+  
+  if (angle > 180)
+    angle = 180;
+
+  uint16_t pulse_width_us = map(angle, 0, 180, _min_pulse_width_us, _max_pulse_width_us);
+  writeMicroseconds(pulse_width_us);
+}
+
 /**************************************************************************************
  * NAMESPACE
  **************************************************************************************/
