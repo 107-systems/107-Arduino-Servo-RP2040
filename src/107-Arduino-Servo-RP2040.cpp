@@ -92,6 +92,17 @@ void Servo::write(int value)
   writeMicroseconds(pulse_width_us);
 }
 
+void Servo::writeAngle(int angle)
+{
+  if (angle < 0)
+    angle = 0;
+  else if (angle > _max_angle)
+    angle = _max_angle;
+
+  uint16_t pulse_width_us = map(angle, 0, _max_angle, _min_pulse_width_us, _max_pulse_width_us);
+  writeMicroseconds(pulse_width_us);
+}
+
 /**************************************************************************************
  * NAMESPACE
  **************************************************************************************/
