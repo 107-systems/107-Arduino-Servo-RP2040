@@ -27,22 +27,16 @@ namespace _107_
 
 void Servo::attach(pin_size_t const pin)
 {
-  attach(pin, DEFAULT_MIN_PULSE_WIDTH_us, DEFAULT_MAX_PULSE_WIDTH_us, DEFAULT_MAX_ANGLE);
+  attach(pin, DEFAULT_MIN_PULSE_WIDTH_us, DEFAULT_MAX_PULSE_WIDTH_us);
 }
 
 void Servo::attach(pin_size_t const pin, uint16_t const min_pulse_width_us, uint16_t const max_pulse_width_us)
-{
-  attach(pin, min_pulse_width_us, max_pulse_width_us, DEFAULT_MAX_ANGLE);
-}
-
-void Servo::attach(pin_size_t const pin, uint16_t min_pulse_width_us, uint16_t max_pulse_width_us, uint16_t max_angle)
 {
   if (_is_attached)
     return;
 
   _min_pulse_width_us = min_pulse_width_us;
   _max_pulse_width_us = max_pulse_width_us;
-  _max_angle = max_angle;
 
   _slice_num = pwm_gpio_to_slice_num(pin);
   _channel = pwm_gpio_to_channel(pin);
@@ -64,6 +58,11 @@ void Servo::attach(pin_size_t const pin, uint16_t min_pulse_width_us, uint16_t m
   gpio_set_function(pin, GPIO_FUNC_PWM);
 
   _is_attached = true;
+}
+
+void Servo::setMaxAngle(uint16_t const max_angle)
+{
+  _max_angle = max_angle;
 }
 
 void Servo::writeMicroseconds(uint16_t const pulse_width_us)
