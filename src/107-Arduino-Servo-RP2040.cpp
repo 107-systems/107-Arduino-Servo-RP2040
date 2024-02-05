@@ -91,10 +91,11 @@ void Servo::write(int const value)
   writeMicroseconds(pulse_width_us);
 }
 
-void Servo::writeAngle(int angle)
+void Servo::writeAngle(int const angle)
 {
   if (angle < 0)
     angle = 0;
+
   else if (angle > _max_angle)
     angle = _max_angle;
 
