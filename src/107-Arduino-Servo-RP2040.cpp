@@ -30,7 +30,7 @@ void Servo::attach(pin_size_t const pin)
   attach(pin, DEFAULT_MIN_PULSE_WIDTH_us, DEFAULT_MAX_PULSE_WIDTH_us);
 }
 
-void Servo::attach(pin_size_t const pin, uint16_t min_pulse_width_us, uint16_t max_pulse_width_us)
+void Servo::attach(pin_size_t const pin, uint16_t const min_pulse_width_us, uint16_t const max_pulse_width_us)
 {
   if (_is_attached)
     return;
