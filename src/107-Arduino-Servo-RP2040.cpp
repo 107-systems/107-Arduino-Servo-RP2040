@@ -81,6 +81,9 @@ void Servo::writeMicroseconds(uint16_t const pulse_width_us)
 
 void Servo::write(int const value)
 {
+  if (!_is_attached)
+    return;
+
   int clamped = value;
   clamped = max(0, clamped);
   clamped = min(180, clamped);
@@ -91,6 +94,9 @@ void Servo::write(int const value)
 
 void Servo::writeAngle(int const angle)
 {
+  if (!_is_attached)
+    return;
+
   int clamped = angle;
   clamped = max(0, clamped);
   clamped = min(_max_angle, clamped);
