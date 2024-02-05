@@ -48,6 +48,7 @@ public:
 
   void attach(pin_size_t const pin);
   void attach(pin_size_t const pin, uint16_t min_pulse_width_us, uint16_t max_pulse_width_us);
+  void attach(pin_size_t const pin, uint16_t min_pulse_width_us, uint16_t max_pulse_width_us, uint16_t max_angle);
   void writeMicroseconds(uint16_t const pulse_width_us);
   void write(int angle);
 
