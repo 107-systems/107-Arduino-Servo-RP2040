@@ -78,7 +78,7 @@ void Servo::write(int angle)
 {
   if (angle < 0)
     angle = 0;
-  
+
   if (angle > 180)
     angle = 180;
 
