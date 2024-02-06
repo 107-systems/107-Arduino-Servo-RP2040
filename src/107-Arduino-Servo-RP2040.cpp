@@ -27,8 +27,16 @@ namespace _107_
 
 void Servo::attach(pin_size_t const pin)
 {
+  attach(pin, DEFAULT_MIN_PULSE_WIDTH_us, DEFAULT_MAX_PULSE_WIDTH_us);
+}
+
+void Servo::attach(pin_size_t const pin, uint16_t const min_pulse_width_us, uint16_t const max_pulse_width_us)
+{
   if (_is_attached)
     return;
+
+  _min_pulse_width_us = min_pulse_width_us;
+  _max_pulse_width_us = max_pulse_width_us;
 
   _slice_num = pwm_gpio_to_slice_num(pin);
   _channel = pwm_gpio_to_channel(pin);
@@ -52,6 +60,11 @@ void Servo::attach(pin_size_t const pin)
   _is_attached = true;
 }
 
+void Servo::setMaxAngle(int const max_angle)
+{
+  _max_angle = max_angle;
+}
+
 void Servo::writeMicroseconds(uint16_t const pulse_width_us)
 {
   if (!_is_attached)
@@ -64,6 +77,32 @@ void Servo::writeMicroseconds(uint16_t const pulse_width_us)
     return;
 
   pwm_set_chan_level(_slice_num, _channel, pulse_width_us);
+}
+
+void Servo::write(int const value)
+{
+  if (!_is_attached)
+    return;
+
+  int clamped = value;
+  clamped = max(0, clamped);
+  clamped = min(180, clamped);
+
+  uint16_t const pulse_width_us = map(clamped, 0, 180, _min_pulse_width_us, _max_pulse_width_us);
+  writeMicroseconds(pulse_width_us);
+}
+
+void Servo::writeAngle(int const angle)
+{
+  if (!_is_attached)
+    return;
+
+  int clamped = angle;
+  clamped = max(0, clamped);
+  clamped = min(_max_angle, clamped);
+
+  uint16_t const pulse_width_us = map(clamped, 0, _max_angle, _min_pulse_width_us, _max_pulse_width_us);
+  writeMicroseconds(pulse_width_us);
 }
 
 /**************************************************************************************
