@@ -47,7 +47,7 @@ jobs:
         run: pip3 install pyserial
 
       - name: Compile examples
-        uses: arduino/compile-sketches@main
+        uses: arduino/compile-sketches@v1
         with:
           fqbn: ${{ matrix.board.fqbn }}
           platforms: ${{ matrix.board.platforms }}
@@ -60,5 +60,6 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@v4
         with:
-          name: sketches-report-${{ matrix.board.artifact-name-suffix }}
+          if-no-files-found: error
           path: ${{ env.SKETCHES_REPORTS_PATH }}
+          name: sketches-report-${{ matrix.board.artifact-name-suffix }}
